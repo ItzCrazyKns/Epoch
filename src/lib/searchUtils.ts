@@ -1,5 +1,7 @@
 "use server"
 
+import { encode } from '@toon-format/toon'
+
 export const searchImage = async (query: string): Promise<string> => {
     const response = await fetch('https://google.serper.dev/images', {
         method: 'POST',
@@ -42,9 +44,10 @@ export const searchWeb = async (query: string): Promise<string> => {
     const data = await response.json();
 
     if (data.organic && data.organic.length > 0) {
-        console.log(data.organic)
-        return JSON.stringify(data.organic);
+        return encode({
+            results: data.organic
+        });
     }
 
-    return '[]'
+    return 'No results found.';
 }

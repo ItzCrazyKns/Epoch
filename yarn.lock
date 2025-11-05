@@ -1353,6 +1353,11 @@
     postcss "^8.4.41"
     tailwindcss "4.1.16"
 
+"@toon-format/toon@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@toon-format/toon/-/toon-0.7.3.tgz#09e4568e4668a4ea3de6a929ead3d441ef6b158c"
+  integrity sha512-LZ3paGMEWOAuFquNUp6sLvhZB85brlIR2Qn5CUWunoCxyGOkImZNXXEl4FXFWCeFcHr8F0ZhPhERa07C8LWgYQ==
+
 "@ts-morph/common@~0.27.0":
   version "0.27.0"
   resolved "https://registry.npmjs.org/@ts-morph/common/-/common-0.27.0.tgz"
