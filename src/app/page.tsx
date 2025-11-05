@@ -23,15 +23,6 @@ export default function Home() {
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentStreamingResponse, setCurrentStreamingResponse] = useState<ResponseRoot | null>(null);
   const [formValues, setFormValues] = useState<Record<string, string>>({});
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, currentStreamingResponse]);
 
   const streamResponse = async (userMessage: string) => {
     setIsStreaming(true);
@@ -129,7 +120,7 @@ export default function Home() {
   const handleButtonAction = async (action: string, label: string) => {
     if (isStreaming) return;
 
-    let actionMessage = `User clicked button: "${label}" (action: ${action})`;
+    let actionMessage = `User clicked button: "${label}"`;
 
     if (Object.keys(formValues).length > 0) {
       actionMessage += "\n\nForm data:\n" + Object.entries(formValues)
@@ -154,18 +145,18 @@ export default function Home() {
 
   return (
     <div className="bg-white min-h-screen w-screen">
-      <div className="max-w-3xl mx-auto flex flex-col space-y-10 mt-10 pb-40">
+      <div className="max-w-3xl mx-auto flex flex-col space-y-6 md:space-y-10 mt-6 md:mt-10 pb-32 md:pb-40 px-4 md:px-0">
         {messages.map((message, index) => (
           <div key={index}>
             {message.role === "user" ? (
               <p className="text-black/50 text-sm font-[450]">{message.content as string}</p>
             ) : (
-              <div className="flex flex-row space-x-2 -translate-x-6">
-                <Avatar className="size-6 mt-4">
+              <div className="flex flex-row space-x-2 md:-translate-x-6">
+                <Avatar className="size-6 mt-4 shrink-0">
                   <div className="bg-linear-to-br from-pink-500 to-yellow-500 h-8 w-8 rounded-full"></div>
                 </Avatar>
-                <Card className="flex-1 shadow-none bg-gray-50 border-gray-200">
-                  <CardContent className="text-gray-600 text-sm font-[450] px-5">
+                <Card className="flex-1 shadow-none bg-gray-50 border-gray-200 min-w-0">
+                  <CardContent className="text-gray-600 text-sm font-[450] px-3 md:px-5">
                     {typeof message.content === "string" ? (
                       <p className="leading-relaxed">{message.content}</p>
                     ) : (
@@ -189,12 +180,12 @@ export default function Home() {
         ))}
 
         {isStreaming && currentStreamingResponse && (
-          <div className="flex flex-row space-x-2 -translate-x-6">
-            <Avatar className="size-6 mt-4">
+          <div className="flex flex-row space-x-2 md:-translate-x-6">
+            <Avatar className="size-6 mt-4 shrink-0">
               <div className="bg-linear-to-br from-pink-500 to-yellow-500 h-8 w-8 rounded-full"></div>
             </Avatar>
-            <Card className="flex-1 shadow-none bg-gray-50 border-gray-200">
-              <CardContent className="text-gray-600 text-sm font-[450] px-5">
+            <Card className="flex-1 shadow-none bg-gray-50 border-gray-200 min-w-0">
+              <CardContent className="text-gray-600 text-sm font-[450] px-3 md:px-5">
                 <div className="space-y-4">
                   {currentStreamingResponse.children?.map((child, index) => (
                     <UIRenderer
@@ -214,13 +205,11 @@ export default function Home() {
             </Card>
           </div>
         )}
-
-        <div ref={messagesEndRef} />
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 max-w-[802px] mx-auto">
+      <div className="fixed bottom-0 left-0 right-0 max-w-[802px] mx-auto px-4 md:px-0">
         <div className="absolute bottom-full left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-        <div className="bg-white pt-1 pb-8">
+        <div className="bg-white pt-1 pb-6 md:pb-8">
           <div className="flex items-center gap-2 rounded-xl bg-gray-50 border border-gray-200 pr-2 pl-3 py-2.5">
             <Textarea
               rows={1}
