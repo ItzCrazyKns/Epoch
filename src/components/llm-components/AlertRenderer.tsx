@@ -40,9 +40,9 @@ export function AlertRenderer({ component }: AlertRendererProps) {
       className: "border-blue-200 bg-blue-50 text-blue-900",
       iconClassName: "text-blue-600",
     },
-  };
+  } as const;
 
-  const config = variantConfig[variant];
+  const config = variantConfig[variant] || variantConfig.default;
   const Icon = config.icon;
 
   return (

@@ -73,7 +73,7 @@ export function CardRenderer({
       onClick={handleClick}
     >
       {(imageUrl || loading) && (
-        <div className="relative h-56 w-full overflow-hidden">
+        <div className="relative h-48 sm:h-56 w-full overflow-hidden">
           {loading ? (
             <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-100 to-gray-200" />
           ) : (
@@ -84,13 +84,13 @@ export function CardRenderer({
                   alt={title || ""}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/20" />
-                <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-white via-white/90 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/10" />
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/80 to-transparent" />
                 <div
-                  className="absolute inset-x-0 bottom-0 h-1/2"
+                  className="absolute inset-x-0 bottom-0 h-1/3"
                   style={{
                     backdropFilter: 'blur(1px)',
-                    background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0) 100%)'
+                    background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0) 100%)'
                   }}
                 />
               </div>
@@ -100,12 +100,12 @@ export function CardRenderer({
       )}
 
       <div className={cn(
-        "relative flex flex-col p-5",
-        (imageUrl || loading) && "-mt-16 z-10"
+        "relative flex flex-col p-4 sm:p-5",
+        (imageUrl || loading) && "-mt-12 sm:-mt-16 z-10"
       )}>
         {(title || description) && (
           <div className="space-y-2 mb-4">
-            {title && <h3 className="text-xl font-semibold text-gray-900 leading-tight">{title}</h3>}
+            {title && <h3 className="text-lg sm:text-xl font-semibold text-gray-900 leading-tight">{title}</h3>}
             {description && (
               <p className="text-sm text-gray-600 line-clamp-2">
                 {description}

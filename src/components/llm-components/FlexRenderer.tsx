@@ -19,7 +19,7 @@ export function FlexRenderer({ component, onAction, formValues, onFormChange }: 
   } = component;
 
   const directionClasses = {
-    row: "flex-row space-x-3",
+    row: "flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3",
     column: "flex-col space-y-4",
   };
 

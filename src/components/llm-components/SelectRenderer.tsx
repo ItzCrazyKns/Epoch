@@ -43,11 +43,13 @@ export function SelectRenderer({ component, value, onChange, isInFlexRow = false
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          {options.map((option, index) => (
-            <SelectItem key={option.value || index} value={option.value || ""}>
-              {option.label || option.value}
-            </SelectItem>
-          ))}
+          {options
+            .filter(option => option.value && option.value.trim() !== "")
+            .map((option, index) => (
+              <SelectItem key={option.value || index} value={option.value!}>
+                {option.label || option.value}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
     </div>

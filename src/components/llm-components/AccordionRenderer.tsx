@@ -21,10 +21,13 @@ export function AccordionRenderer({ component, onAction, formValues, onFormChang
 
   if (items.length === 0) return null;
 
+  const accordionProps = allowMultiple
+    ? { type: "multiple" as const }
+    : { type: "single" as const, collapsible: true };
+
   return (
     <Accordion
-      type={allowMultiple ? "multiple" : "single"}
-      collapsible
+      {...accordionProps}
       className="w-full space-y-2"
     >
       {items.map((item, index) => (

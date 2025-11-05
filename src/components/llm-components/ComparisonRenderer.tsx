@@ -24,8 +24,8 @@ export function ComparisonRenderer({
   return (
     <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden">
       {title && (
-        <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
-          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100 bg-gray-50">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900">{title}</h3>
         </div>
       )}
 
@@ -34,13 +34,14 @@ export function ComparisonRenderer({
           <div
             key={index}
             className={cn(
-              "p-6",
-              index % 2 === 0 ? "border-r border-gray-100" : ""
+              "p-4 sm:p-6",
+              index % 2 === 0 ? "md:border-r border-gray-100" : "",
+              index > 0 && "border-t md:border-t-0 border-gray-100"
             )}
           >
             {item.label && (
               <div className="mb-4">
-                <h4 className="text-base font-semibold text-gray-900">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-900">
                   {item.label}
                 </h4>
                 {item.subtitle && (

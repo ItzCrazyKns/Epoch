@@ -56,29 +56,29 @@ export function TimelineRenderer({
 
   return (
     <div className="relative">
-      <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-gray-200" />
+      <div className="absolute left-3 sm:left-4 top-0 bottom-0 w-[2px] bg-gray-200" />
 
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         {items.map((item, index) => (
-          <div key={index} className="flex gap-4">
+          <div key={index} className="flex gap-3 sm:gap-4">
             <div className="relative flex-shrink-0">
               <div className={cn(
-                "w-8 h-8 rounded-full border-4 border-white",
+                "w-6 h-6 sm:w-8 sm:h-8 rounded-full border-4 border-white",
                 item.active ? "bg-blue-600" : "bg-gray-300"
               )} />
             </div>
 
-            <div className="flex-1 pb-8">
+            <div className="flex-1 pb-6 sm:pb-8">
               {item.date && (
-                <p className="text-sm text-gray-500 mb-1">{item.date}</p>
+                <p className="text-xs sm:text-sm text-gray-500 mb-1">{item.date}</p>
               )}
               {item.title && (
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
                   {item.title}
                 </h4>
               )}
               {item.description && (
-                <p className="text-gray-600 mb-3">{item.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 mb-3">{item.description}</p>
               )}
               {item.children && item.children.length > 0 && (
                 <div className="space-y-2">

@@ -69,7 +69,7 @@ export function GalleryRenderer({ component, onAction }: GalleryRendererProps) {
   return (
     <div className="space-y-4">
       {title && (
-        <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{title}</h3>
       )}
 
       <div className={cn(

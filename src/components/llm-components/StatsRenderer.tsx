@@ -31,10 +31,10 @@ export function StatsRenderer({ component }: StatsRendererProps) {
         return (
           <div
             key={index}
-            className="relative rounded-xl border border-gray-100 bg-white p-6 hover:shadow-lg transition-shadow"
+            className="relative rounded-xl border border-gray-100 bg-white p-4 sm:p-6 hover:shadow-lg transition-shadow"
           >
             {item.icon && (
-              <div className="absolute top-6 right-6 text-2xl opacity-20">
+              <div className="absolute top-4 sm:top-6 right-4 sm:right-6 text-xl sm:text-2xl opacity-20">
                 {item.icon}
               </div>
             )}
@@ -46,7 +46,7 @@ export function StatsRenderer({ component }: StatsRendererProps) {
                 </p>
               )}
               {item.value && (
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">
                   {item.value}
                 </p>
               )}

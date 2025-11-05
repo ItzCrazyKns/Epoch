@@ -55,7 +55,7 @@ export function HeroRenderer({
   }, [backgroundImage, backgroundImageQuery, loadedQuery]);
 
   return (
-    <div className="relative w-full rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 min-h-[400px]">
+    <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 min-h-[300px] sm:min-h-[400px]">
       {(imageUrl || loading) && (
         <div className="absolute inset-0">
           {loading ? (
@@ -78,20 +78,20 @@ export function HeroRenderer({
         </div>
       )}
 
-      <div className="relative z-10 p-12 flex flex-col justify-center min-h-[400px]">
+      <div className="relative z-10 p-6 sm:p-12 flex flex-col justify-center min-h-[300px] sm:min-h-[400px]">
         {title && (
-          <h1 className="text-5xl font-bold text-white mb-4 max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 max-w-3xl">
             {title}
           </h1>
         )}
         {subtitle && (
-          <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl">
             {subtitle}
           </p>
         )}
 
         {children.length > 0 && (
-          <div className="space-y-4 mt-4">
+          <div className="space-y-3 sm:space-y-4 mt-4">
             {children.map((child, index) => (
               <UIRenderer
                 key={index}
