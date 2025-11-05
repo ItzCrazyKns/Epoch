@@ -9,7 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^2.0.62",
+    "@ai-sdk/openai": "^3.0.0-beta.52",
+    "@ai-sdk/react": "^3.0.0-beta.93",
     "@langchain/core": "^1.0.2",
     "@langchain/openai": "^1.0.0",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -22,7 +23,7 @@
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.13",
-    "ai": "^5.0.87",
+    "ai": "^6.0.0-beta.93",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
