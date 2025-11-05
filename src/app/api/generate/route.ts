@@ -588,8 +588,6 @@ Always return valid JSON adhering to the schema. Keep responses natural and conv
 Schema: ${JSON.stringify(z.toJSONSchema(ResponseComponent))}
 `
 
-fs.writeFileSync('prompt.txt', JSON.stringify(z.toJSONSchema(ResponseComponent)))
-
 export const POST = async (request: Request) => {
     const body = await request.json();
 
