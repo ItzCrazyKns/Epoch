@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use Epoch in your research or project, please cite it as below."
+type: software
+title: "Epoch: A Visual Interface for Large Language Models"
+version: 0.1.0
+date-released: 2025-01-01
+authors:
+  - family-names: "Srivastava"
+    given-names: "Kushagra"
+    email: "kushagra20103@gmail.com"
+repository-code: "https://github.com/itzcrazykns/epoch"
+url: "https://github.com/itzcrazykns/epoch"
+abstract: "A visual interface for LLMs that transforms text-based conversations into interactive, component-driven experiences through recursive component tree generation. Uses grammar-based structured outputs to enable LLMs to natively output fully interactive React interfaces with bidirectional state management."
+keywords:
+  - llm
+  - large-language-models
+  - user-interface
+  - react
+  - nextjs
+  - typescript
+  - ai
+  - interactive
+  - structured-output
+  - recursive-generation
+  - generative-ui
+license: MIT
