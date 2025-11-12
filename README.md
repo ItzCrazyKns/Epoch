@@ -18,7 +18,7 @@ This architecture transforms LLMs from text generators into interface compilers,
 - **Real-time Streaming**: Server-Sent Events stream partial object updates as the LLM generates component trees, with progressive rendering on the client
 - **Stateful Conversational Context**: All user interactions (button clicks, form submissions, card selections) are serialized and fed back into the conversation history
 - **Recursive Rendering Engine**: UIRenderer recursively traverses component trees, maintaining form state and action handlers through the entire tree depth
-- **Integrated Search**: Serper API integration for real-time web search and image retrieval directly within generated interfaces
+- **Integrated Search**: Pluggable search layer with privacy-friendly SearxNG support or Serper API integration for real-time web and image search directly within generated interfaces
 - **Local LLM Support**: Run completely offline with Ollama integration - no API costs, full privacy, and support for Llama, Mistral, Qwen, and other open-source models
 
 ## Available Components
@@ -38,7 +38,7 @@ Epoch supports a wide range of UI components:
 3. **Server-Sent Events (SSE) Streaming**: Partial JSON objects stream back via SSE as the LLM generates tokens, with the schema validator ensuring structural integrity at each chunk
 4. **Recursive Component Rendering**: `UIRenderer` uses discriminated union pattern matching to recursively traverse the component tree, instantiating React renderers for each node while propagating action handlers and form state
 5. **Bidirectional State Flow**: User interactions (button actions, form inputs) are serialized into natural language descriptions and appended to conversation history, maintaining stateful context
-6. **Search Integration**: Components with `imageQuery` or `searchQuery` fields trigger async Serper API calls for real-time web/image search, with results cached in-memory
+6. **Search Integration**: Components with `imageQuery` or `searchQuery` fields trigger async calls to SearxNG or Serper (based on configuration) for real-time web/image search, with results cached in-memory
 7. **Stateful Re-generation**: The LLM processes interaction context and generates new component trees, creating iterative, explorable interfaces across conversation turns
 
 ## Installation
@@ -49,9 +49,13 @@ Epoch supports a wide range of UI components:
 - **One of the following**:
   - OpenAI API key (for cloud-based models)
   - [Ollama](https://ollama.ai) installed locally (for local LLMs - **recommended for privacy and cost savings**)
-- Serper API key from [serper.dev](https://serper.dev) for web and image search (SearxNG capabilities coming soon)
+- Search provider (configure at least one):
+  - SearxNG instance URL (self-hosted or hosted) for privacy-focused meta search
+  - Serper API key from [serper.dev](https://serper.dev) for Google-powered search
 
 ### Setup
+
+<!-- markdownlint-disable MD029 -->
 
 1. Clone the repository:
 
@@ -72,7 +76,7 @@ mv .env.example .env
 
 3. Open `.env` and configure your setup:
 
-**Option A: Using Ollama (Local, Private, Free)**
+#### Option A: Using Ollama (Local, Private, Free)
 
 ```env
 ....
@@ -82,7 +86,7 @@ OLLAMA_API_URL=http://localhost:11434/api
 ...
 ```
 
-**Option B: Using OpenAI (Cloud-based)**
+#### Option B: Using OpenAI (Cloud-based)
 
 ```env
 ...
@@ -91,6 +95,16 @@ MODEL_NAME=gpt-5-mini
 USE_OPENAI=true
 OPENAI_API_KEY=your_api_key_here
 ...
+```
+
+
+#### Search Provider (Required — configure one)
+
+Provide values for the provider you plan to use (leave the other blank).
+
+```env
+SEARXNG_API_URL= # Set to your SearxNG instance URL (e.g., http://localhost:8080)
+SERPER_API_KEY= # Set to your Serper API key
 ```
 
 4. Install dependencies:
@@ -112,6 +126,8 @@ npm run start
 ```
 
 7. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+<!-- markdownlint-enable MD029 -->
 
 ## Development
 
@@ -150,7 +166,6 @@ npm run dev
   - Google Gemini integration
 
 - **Web Search Integration**
-  - SearXNG support for privacy-focused web search
   - Automatic source citations
   - Live content scraping capabilities
 
