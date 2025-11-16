@@ -188,7 +188,7 @@ npm run dev
   - Multi-agent orchestration
   - Conversation memory and context persistence
   - User authentication and profiles
-  - Conversation sharing and export
+  - Conversation export
   - Export interfaces to React/Vue/HTML
 
 - **Developer Experience**
